@@ -1,0 +1,43 @@
+﻿<Window x:Class="Chat_Server.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Chat_Server"
+        mc:Ignorable="d"
+        Title="Server" Height="450" Width="800">
+    <Grid Background="SkyBlue">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="6*"/>
+            <RowDefinition Height="1*"/>
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="2*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+            </Grid.ColumnDefinitions>
+            <TextBox x:Name="portBox" Margin="10" VerticalContentAlignment="Center" KeyDown="ListenKeyHandler"></TextBox>
+            <Button x:Name="listenBtn" Click="ListenClickHandler" Grid.Column="1" Margin="10">Listen</Button>
+            <StackPanel Grid.Column="2">
+                <Label HorizontalAlignment="Center">Status</Label>
+                <Label x:Name="statusLabel" HorizontalAlignment="Center" Foreground="Red">Not Connected</Label>
+            </StackPanel>
+        </Grid>
+
+        <ScrollViewer x:Name="chatBoxScroll" Grid.Row="1" Margin="10" Background="White" ScrollChanged="ScrollChangedHandler">
+            <TextBlock x:Name="chatBox" TextWrapping="Wrap"></TextBlock>
+        </ScrollViewer>
+
+        <Grid Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="5*"/>
+                <ColumnDefinition Width="1*"/>
+            </Grid.ColumnDefinitions>
+            <Button Click="SendClickHandler" Grid.Column="1" Margin="10">Send</Button>
+            <TextBox x:Name="InputBox" Margin="10" VerticalContentAlignment="Center" KeyDown="SendKeyHandler"></TextBox>
+        </Grid>
+    </Grid>
+</Window>
